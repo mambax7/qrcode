@@ -9,31 +9,32 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright  XOOPS Project     
+ * @copyright  XOOPS Project
  * @license    http://www.fsf.org/copyleft/gpl.html GNU public license
- * @package         
- * @author 	   		
+ * @package
+ * @author
  *
- * Version : $Id:
+ * Version :
  * ****************************************************************************
  */
 
-require_once '../../../include/cp_header.php';
-include 'header.php';
+//require_once __DIR__ . '/../../../include/cp_header.php';
+//include __DIR__ . '/header.php';
 
+require_once __DIR__ . '/header.php';
+// Display Admin header
+xoops_cp_header();
 
-include_once XOOPS_ROOT_PATH."/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
+//require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname') . '/class/admin.php';
 
-	$index_admin = new ModuleAdmin();
+$adminObject = \Xmf\Module\Admin::getInstance();
 
-$index_admin->addConfigLabel(_AM_QRCODE_CONFIG_CHECK) ;
-$index_admin->addLineConfigLabel(_AM_QRCODE_CONFIG_PHP, $xoopsModule->getInfo("min_php"), 'php') ;
-$index_admin->addLineConfigLabel(_AM_QRCODE_CONFIG_XOOPS, $xoopsModule->getInfo("min_xoops"), 'xoops') ;	
-	
-	echo $index_admin->addNavigation('index.php') ;
-    echo $index_admin->renderIndex();
-	
+$adminObject->addConfigLabel(_AM_QRCODE_CONFIG_CHECK);
+$adminObject->addLineConfigLabel(_AM_QRCODE_CONFIG_PHP, $xoopsModule->getInfo('min_php'), 'php');
+$adminObject->addLineConfigLabel(_AM_QRCODE_CONFIG_XOOPS, $xoopsModule->getInfo('min_xoops'), 'xoops');
 
-include "footer.php";
+$adminObject->displayNavigation(basename(__FILE__));
+$adminObject->displayIndex();
+
+include __DIR__ . '/footer.php';
 xoops_cp_footer();
-?>

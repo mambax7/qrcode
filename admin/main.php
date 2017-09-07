@@ -21,7 +21,7 @@ if (isset($_POST['type'])) {
             if (!$_POST['qr_phone']) {
                 $res = _QRCODE_PHONE_F_ERROR_NR;
             } else {
-                $data            = array();
+                $data            = [];
                 $type            = 'phone';
                 $data['phonenr'] = $_POST['qr_phone'];
                 $res             = qrcode($type, $data);
@@ -43,7 +43,7 @@ if (isset($_POST['type'])) {
             if (!$_POST['qr_url']) {
                 $res = _QRCODE_URL_F_ERROR_URL;
             } else {
-                $data        = array();
+                $data        = [];
                 $type        = 'url';
                 $data['url'] = $_POST['qr_url'];
                 $res         = qrcode($type, $data);
@@ -64,7 +64,7 @@ if (isset($_POST['type'])) {
             if (!$_POST['qr_email_to']) {
                 $res = _QRCODE_EMAIL_F_ERROR_EMAIL;
             } else {
-                $data            = array();
+                $data            = [];
                 $type            = 'email';
                 $data['email']   = $_POST['qr_email_to']; // Send email to ?
                 $data['subject'] = $_POST['qr_email_sub']; // Subject of the email
@@ -88,7 +88,7 @@ if (isset($_POST['type'])) {
             if (!$_POST['qr_sms_to']) {
                 $res = _QRCODE_SMS_F_ERROR_NR;
             } else {
-                $data            = array();
+                $data            = [];
                 $type            = 'sms';
                 $data['phonenr'] = $_POST['qr_sms_to'];
                 $data['txt']     = $_POST['qr_sms_txt'];
@@ -111,7 +111,7 @@ if (isset($_POST['type'])) {
             if (!$_POST['qr_txt']) {
                 $res = _QRCODE_TXT_F_ERROR_TXT;
             } else {
-                $data        = array();
+                $data        = [];
                 $type        = 'txt';
                 $data['txt'] = $_POST['qr_txt'];
                 $res         = qrcode($type, $data);
@@ -131,7 +131,7 @@ if (isset($_POST['type'])) {
 
         case 'geo':
 
-            $data         = array();
+            $data         = [];
             $type         = 'geo';
             $data['lat']  = $_POST['qr_latitude'];
             $data['long'] = $_POST['qr_longtitude'];
@@ -152,7 +152,7 @@ if (isset($_POST['type'])) {
 
         case 'bus':
 
-            $data            = array();
+            $data            = [];
             $type            = 'contact';
             $data['surname'] = $_POST['qr_c_anaam'];
             $data['name']    = $_POST['qr_c_vnaam'];

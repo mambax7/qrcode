@@ -4,7 +4,7 @@
 //  http://www.designburo.nl                                                 //
 //  Project: QRcode v1.0                                                     //
 //  ------------------------------------------------------------------------ //
-function qrcode($type = '', $data = array(), $size = '250')
+function qrcode($type = '', $data = [], $size = '250')
 {
     if ($type != '') {
         switch ($type) {
@@ -21,6 +21,7 @@ function qrcode($type = '', $data = array(), $size = '250')
                     break;
                 }
             // QRCode with phonenumber
+            // no break
             case 'phone':
                 if (!$data['phonenr']) {
                     return 'error no phonenumber';
@@ -33,6 +34,7 @@ function qrcode($type = '', $data = array(), $size = '250')
                     break;
                 }
             // QRCcode sending SMS
+            // no break
             case 'sms':
                 if (!$data['phonenr']) {
                     return 'error no gsm number';
@@ -45,6 +47,7 @@ function qrcode($type = '', $data = array(), $size = '250')
                     break;
                 }
             // QRCode plain text
+            // no break
             case 'txt':
                 if (!$data['txt']) {
                     return 'error no text';
@@ -57,6 +60,7 @@ function qrcode($type = '', $data = array(), $size = '250')
                     break;
                 }
             //QRCode url
+            // no break
             case 'url':
                 if (!$data['url']) {
                     return 'error no url';
@@ -69,6 +73,7 @@ function qrcode($type = '', $data = array(), $size = '250')
                     break;
                 }
             //QRCode gps coordinates
+            // no break
             case 'gps':
                 $l  = 'geo:' . $data['lat'] . ',' . $data['long'] . ',100';
                 $ul = rawurlencode(utf8_encode($l));

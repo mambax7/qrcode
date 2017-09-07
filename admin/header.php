@@ -1,22 +1,41 @@
 <?php
 
 require_once __DIR__ . '/../../../include/cp_header.php';
-//require_once $GLOBALS['xoops']->path('www/class/xoopsformloader.php');
+//require_once __DIR__ . '/../../../class/xoopsformloader.php';
 
-//require_once __DIR__ . '/../class/utility.php';
+//require __DIR__ . '/../class/utility.php';
 //require_once __DIR__ . '/../include/common.php';
+
 
 $moduleDirName = basename(dirname(__DIR__));
 
-$pathIcon16           = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons16'));
-$pathIcon32           = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons32'));
-$xoopsModuleAdminPath = $GLOBALS['xoops']->path('www/' . $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin'));
-require_once "{$xoopsModuleAdminPath}/moduleadmin.php";
-
-//defined("FRAMEWORKS_ART_FUNCTIONS_INI") || require_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.ini.php';
-//load_functions("admin");
+if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
+} else {
+    $moduleHelper = Xmf\Module\Helper::getHelper('system');
+}
+/** @var Xmf\Module\Admin $adminObject */
+$adminObject = Xmf\Module\Admin::getInstance();
 
 $myts = MyTextSanitizer::getInstance();
+
+if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
+    require_once $GLOBALS['xoops']->path('class/template.php');
+    $xoopsTpl = new XoopsTpl();
+}
+
+$pathIcon16      = Xmf\Module\Admin::iconUrl('', 16);
+$pathIcon32      = Xmf\Module\Admin::iconUrl('', 32);
+$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
+
+// Local icons path
+$xoopsTpl->assign('pathModIcon16', $pathIcon16);
+$xoopsTpl->assign('pathModIcon32', $pathIcon32);
+
+// Load language files
+$moduleHelper->loadLanguage('admin');
+$moduleHelper->loadLanguage('modinfo');
+$moduleHelper->loadLanguage('main');
+
 
 if ($xoopsUser) {
     $modulepermHandler = xoops_getHandler('groupperm');
@@ -31,13 +50,6 @@ if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
     require_once XOOPS_ROOT_PATH . '/class/template.php';
     $xoopsTpl = new XoopsTpl();
 }
-
-//xoops_cp_header();
-
-// Load language files
-xoops_loadLanguage('admin', $moduleDirName);
-xoops_loadLanguage('modinfo', $moduleDirName);
-xoops_loadLanguage('main', $moduleDirName);
 
 xoops_cp_header();
 $adminObject = \Xmf\Module\Admin::getInstance();

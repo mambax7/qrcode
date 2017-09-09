@@ -37,18 +37,18 @@ $adminmenu[] = [
 ];
 /*
 $i                      = 1;
-$adminmenu[$i]['title'] = _MI_QRCODE_HOME;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/home.png';
+'title' =>  _MI_QRCODE_HOME,
+'link' =>  'admin/index.php',
+'icon' =>  'assets/images/admin/home.png',
 ++$i;
-$adminmenu[$i]['title'] = _MI_QRCODE_NAME;
-$adminmenu[$i]['link']  = 'admin/main.php';
-$adminmenu[$i]['desc']  = 'QRCodes 4 XOOPS';
-$adminmenu[$i]['icon']  = 'assets/images/admin/qrcode.png';
+'title' =>  _MI_QRCODE_NAME,
+'link' =>  'admin/main.php',
+'desc' =>  'QRCodes 4 XOOPS',
+'icon' =>  'assets/images/admin/qrcode.png',
 ++$i;
-$adminmenu[$i]['title'] = _MI_QRCODE_ABOUT;
-$adminmenu[$i]['link']  = 'admin/about.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/about.png';
+'title' =>  _MI_QRCODE_ABOUT,
+'link' =>  'admin/about.php',
+'icon' =>  'assets/images/admin/about.png',
 */
 // $adminmenu[2]['title'] = _MI_QRCODE_HELP;
 // $adminmenu[2]['link'] = "admin/help.php";

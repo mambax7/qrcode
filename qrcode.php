@@ -6,7 +6,7 @@
 //  ------------------------------------------------------------------------ //
 function qrcode($type = '', $data = [], $size = '250')
 {
-    if ($type != '') {
+    if ('' != $type) {
         switch ($type) {
             //QRCode with sending e-mail
             case 'email':
